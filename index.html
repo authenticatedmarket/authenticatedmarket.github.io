@@ -15,16 +15,18 @@
     <div class="card col-8 p-0">
         <div class="card-header fs-2 fw-bold mb-0">Hey Early Adopter!</div>
         <div class="card-body px-4 py-3">
-            <p class="fs-4 mb-0" style="text-indent: 6%;">We are AIM, an Authenticated Internet Marketplace focused on moderating transactions in the second-hand luxury goods marketplace.
-                We are glad you clicked on our page and you are intersted in our services; however, our website isn't ready quite yet.
-                In the meantime, we welcome you to join our mailing list to stay up-to-date with everything AIM.
-                Additionally, we hope you can answer a few questions about our product so we can make it the best it can be.<br>Thank you.
+            <p class="fs-4 mb-0" style="text-indent: 6%;">We are AIM, an Authenticated Internet Marketplace focused on moderating and authenticating transactions 
+                and products in the second-hand luxury goods space by utilizing cutting edge NFT and NFC tag technology to provide our customers with a 
+                seamless and transparent buying process that bridges that gap between the physical and digital world.
+                You have arrived a bit early to our website so everything isn't ready yet, but if you want to join our mailing list to stay up-to-date 
+                with everything AIM, we would greatly appreciate it.
             </p>
             <p class="fs-2 fw-bold pt-2">The AIM Team</p>
             <hr>
-            <form action="Question1.html">
+            <form id="my-form" method="POST" 
+            action="https://script.google.com/macros/s/AKfycbzNMfSovCQWGxtEjF8f5XfeqLIYhXc3q21jscAnyn-eKq5EP7AMXZkNmBBhMytTXRLarw/exec">
             <label for="exampleFormControlInput1" class="form-label fs-4">Join our mailing list:</label>
-            <input type="email" required class="form-control form-control-md fs-5" id="exampleFormControlInput1" placeholder="email@address.com">
+            <input name = "Email" type="email" required class="form-control form-control-md fs-5" id="exampleFormControlInput1" placeholder="email@address.com">
             <button type="submit" class="btn btn-sm btn-primary fs-5 mt-3">Submit</button>
             </form>
         </div>
@@ -33,4 +35,22 @@
     <div class="col-2"></div>
 </div>
 </body>
+<script>
+    window.addEventListener("load", function() {
+  const form = document.getElementById('my-form');
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const action = e.target.action;
+    fetch(action, {
+      method: 'POST',
+      body: data,
+    })
+    .then(() => {
+        location.href='Questionaire.html'
+    })
+  });
+});
+
+</script>
 </html>

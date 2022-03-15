@@ -63,16 +63,18 @@
   <div class="col-8 px-0 fs-5">
     <p class="card-header fw-bold">On your left is our prototype for the sellable product display. 
       In in fields below please tell us what you like, dislike, and would like to see added to the product.</p>
-      <form class="p-3">
+      <form  id="my-form" method="POST" 
+      action="https://script.google.com/macros/s/AKfycbz_j1lzls2hAeG637rb6HJERrm8sbhdqrhI8kghwHcijAUP-ITSIb3sO_DzVFP-m5PG4g/exec" class="p-3">
       <label for="exampleFormControlTextarea1" class="form-label">Features you like:</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Like"></textarea>
   <label for="exampleFormControlTextarea1" class="form-label">Features you dislike:</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Dislike"></textarea>
   <label for="exampleFormControlTextarea1" class="form-label">Features you would like to see added:</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Add"></textarea>
   <label for="exampleFormControlTextarea1" class="form-label">Anything else you want to tell us:</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  <button type="button" class="btn btn-primary btn-lg mt-3">Submit</button>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Else"></textarea>
+  <button type="button" class="btn btn-primary btn-lg mt-3"  data-bs-toggle="modal" data-bs-target="#exampleModal2" onclick="redirect()">Submit</button>
+  <button type="submit" id="bob" style="visibility:hidden;"></button>
   </form>
   </div>
   </div>
@@ -105,11 +107,6 @@
               </div>
             </div>
           </div>
-    
-
-
-
-
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -126,25 +123,43 @@
             </div>
           </div>
 
-          <div class="modal hide fade" id="modals">
+          <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title fw-bold fs-3 text-success" id="exampleModalLabel">Success!</h5>
+                  <h5 class="modal-title text-success fs-4 fw-bold" id="exampleModalLabel">Thank you!</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <p class="fs-5">Your email address was sucessfully added to our mailing list. 
-                    If you wouldn't mind sticking around for less than 5 minutes to provide some input in our development process, we would surely appreciate your feedback.</p>
+                  <p>Your responses were successfully recorded and we thank you for taking time out of your day to answer our questions. You will be redirected back to our main page momentarily.</p>
                 </div>
               </div>
             </div>
           </div>
-        <script type="text/javascript">
-          $(window).on('load', function() {
-              $('#modals').modal('show');
-          });
-      </script>
-        
+          <script>
+          function redirect() {
+            setTimeout(function() {
+              document.getElementById("bob").click();
+            }, 5000);
+          }       
+          
+          window.addEventListener("load", function() {
+  const form = document.getElementById('my-form');
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const action = e.target.action;
+    console.log("Action" +action);
+    fetch(action, {
+      method: 'POST',
+      body: data,
+    })
+    .then(() => {
+      location.href='index.html'
+    })
+  });
+});
+
+          </script>
     </body>
 </html>
