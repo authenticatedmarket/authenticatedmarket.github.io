@@ -14,35 +14,43 @@
             <div class="card-body p-3">
                 <form id="my-form"  method="POST" 
                 action="https://script.google.com/macros/s/AKfycby1lFTv_5Y1b7f6cSK7gv3uuv5mZvH3038j50evFM1I83h2FO3eTetFphvzyMqsc8VlGw/exec">
-                <p class="fs-5"><strong>Question 1: </strong>Would you prefer a social media focused or business focused marketplace?</p>
+                <p class="fs-5 mb-0"><strong>Question 1: </strong>Would you prefer a social media focused or business focused marketplace?</p>
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                    <input type="radio" class="btn-check" onclick="document.getElementById('Q1').value = 'social site'" name="btnradio" id="btnradio1" autocomplete="off" checked>
                     <label class="btn btn-outline-success" for="btnradio1">Social Media Focused</label>
                   
                     <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                    <label class="btn btn-outline-success" for="btnradio2">Business Focused</label>
+                    <label class="btn btn-outline-success" onclick="document.getElementById('Q1').value = 'buisness site'" for="btnradio2">Business Focused</label>
                   </div>
-                <p class="fs-5 pt-3"><strong>Question 2: </strong>How would you prefer the cost of authentication to be paid?</p>
+                  <textarea name = "Q1" id="Q1" value="social media focused" id="exampleFormControlTextarea1" style="visibility: hidden;"></textarea>
+
+                <p class="fs-5 pt-4 mb-0"><strong>Question 2: </strong>How would you prefer the cost of authentication to be paid?</p>
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnradio1" id="btnradio3" autocomplete="off" checked>
+                    <input type="radio" class="btn-check" name="btnradio1" onclick="document.getElementById('Q2').value = 'flat rate'" id="btnradio3" autocomplete="off" checked>
                     <label class="btn btn-outline-success" for="btnradio3">Flat rate</label>
-                    <input type="radio" class="btn-check" name="btnradio1" id="btnradio4" autocomplete="off">
+                    <input type="radio" class="btn-check" name="btnradio1" onclick="document.getElementById('Q2').value = 'percentage'" id="btnradio4" autocomplete="off">
                     <label class="btn btn-outline-success" for="btnradio4">Percentage of cost</label>
                   </div>
-                  <p class="fs-5 pt-3"><strong>Question 3: </strong>Would you pay an additional $10 to the cost of the displayed product to verify your ownership with NFT technology?</p>
+                  <textarea name = "Q2" id="Q2" value="flat rate" id="exampleFormControlTextarea1" style="visibility: hidden;"></textarea>
+
+                  <p class="fs-5 pt-4 mb-0"><strong>Question 3: </strong>Would you pay an additional $10 to the cost of the displayed product to verify your ownership with NFT technology?</p>
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnradio2" id="btnradio5" autocomplete="off" checked>
+                    <input type="radio" class="btn-check" name="btnradio2" onclick="document.getElementById('Q3').value = 'NFT'" id="btnradio5" autocomplete="off" checked>
                     <label class="btn btn-outline-success" for="btnradio5">Yes</label>
-                    <input type="radio" class="btn-check" name="btnradio2" id="btnradio6" autocomplete="off">
+                    <input type="radio" class="btn-check" name="btnradio2" onclick="document.getElementById('Q3').value = 'No NFT'" id="btnradio6" autocomplete="off">
                     <label class="btn btn-outline-success" for="btnradio6">No</label>
                   </div>
-                  <p class="fs-5 pt-3"><strong>Question 4: </strong>Would you prefer a physical NFC tag on your product to improve security or would you prefer the item remain untouched?</p>
+                  <textarea name = "Q3" id="Q3" value="NFT" id="exampleFormControlTextarea1" style="visibility: hidden;"></textarea>
+
+                  <p class="fs-5 pt-4 mb-0"><strong>Question 4: </strong>Would you prefer a physical NFC tag on your product to improve security or would you prefer the item remain untouched?</p>
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="btnradio3" id="btnradio7" autocomplete="off" checked>
+                    <input type="radio" class="btn-check" name="btnradio3" onclick="document.getElementById('Q4').value = 'NFC Tag'" id="btnradio7" autocomplete="off" checked>
                     <label class="btn btn-outline-success" for="btnradio7">Physical NFC Tag</label>
-                    <input type="radio" class="btn-check" name="btnradio3" id="btnradio8" autocomplete="off">
+                    <input type="radio" class="btn-check" name="btnradio3" onclick="document.getElementById('Q1').value = 'No Tag'" id="btnradio8" autocomplete="off">
                     <label class="btn btn-outline-success" for="btnradio8">Leave Item Untouched</label>
                   </div>
+                  <textarea name = "Q4" id="Q4" value="NFC tag" id="exampleFormControlTextarea1" style="visibility: hidden;"></textarea>
+
                   <p class="fs-5 pt-3"><strong>Question 6: </strong>Anything else you want to tell us?</p>
                   <textarea name = "Else" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                   <button type="submit" class="btn btn-lg btn-primary mt-3">Next</button>
@@ -88,6 +96,13 @@
   });
 });
 
+$( document ).ready(function() {
+  document.getElementById("Q1").value = "social site";
+  document.getElementById("Q2").value = "flat rate";
+  document.getElementById("Q3").value = "NFT";
+  document.getElementById("Q4").value = "NFC Tag";
+console.log( "ready!" );
+});
       </script>
         
     </body>
